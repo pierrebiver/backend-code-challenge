@@ -1,15 +1,20 @@
 {
   "name": "be-code-challenge",
   "version": "1.0.0",
+  "type": "module",
   "description": "GAN Integrity backend code challenge",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "init-db": " mongoimport --db gan-integrity --collection cities --file addresses.json --jsonArray"
   },
   "author": "GAN Integrity",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
+    "express-query-boolean": "^2.0.0",
     "fs-extra": "7.0.0",
+    "mongodb": "^3.6.9",
     "node-fetch": "^2.6.1"
   }
 }
