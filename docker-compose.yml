@@ -1,0 +1,31 @@
+version: '3'
+networks:
+  local:
+    driver: bridge
+
+services:
+
+  mongo-local:
+    image: "mongo:4.4.4"
+    container_name: mongo-local
+    ports:
+      - "27017:27017"
+    networks:
+      - local
+    volumes:
+      - "./.docker/conf/mongo/db:/data/db:delegated"
+    restart: always
+
+  rabbitmq:
+    image: "rabbitmq:latest"
+    container_name: 'rabbitmq'
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - local
+
+

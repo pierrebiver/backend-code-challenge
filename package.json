@@ -6,15 +6,21 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "init-db": " mongoimport --db gan-integrity --collection cities --file addresses.json --jsonArray"
+    "web-service": "node api/app.js",
+    "worker": "node api/worker.js",
+    "init-db": " mongoimport --db gan-integrity --collection cities --file addresses.json --drop --jsonArray"
   },
   "author": "GAN Integrity",
   "license": "ISC",
   "dependencies": {
+    "amqplib": "^0.8.0",
     "express": "^4.17.1",
     "express-query-boolean": "^2.0.0",
     "fs-extra": "7.0.0",
     "mongodb": "^3.6.9",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "node-schedule": "^2.0.0",
+    "throng": "^5.0.0",
+    "uuid": "^8.3.2"
   }
 }

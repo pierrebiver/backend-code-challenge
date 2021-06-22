@@ -14,7 +14,15 @@ export async function connectDatabase() {
     }
 }
 
-export function closeConnection() {
+export async function findAllCitiesBut(from) {
+    return collection.find({guid: {$ne: from}}, {projection: {guid: 1, longitude: 1, latitude:1, address: 1}}).toArray();
+}
+
+export async function findAll() {
+    return collection.find();
+}
+
+export function closeDatabaseConnection() {
     return client.close();
 }
 
@@ -22,6 +30,6 @@ export async function findCityByTag(tag, isActive) {
     return collection.find({tags: tag, isActive}).toArray();
 }
 
-export async function findById(guid) {
-    return collection.findOne({guid});
+export async function findByIds(guids) {
+    return collection.find({guid: {$in: guids}}).toArray();
 }

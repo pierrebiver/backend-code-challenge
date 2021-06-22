@@ -1,11 +1,18 @@
 # GAN Integrity backend code challenge
 
-The script `index.js` uses a local api to perform various operations on a set of cities. Your task is to implement an api so that the script runs successfully all the way to the end.
+## Pre-requisite
+ You only need to have node and docker (with docker-compose) installed on your machine
 
-Run `npm install` and `npm run start` to start the script.
+## How to launch the script
+-  run ``docker-compose up -d ``
+- run ``npm run init-db`` to initalize mongodb with the cities
+- run ``npm run web-service``
+- run ``npm run worker``
+- then finally ``npm run start``
 
-Your api can load the required data from [here](addresses.json).
 
-In the distance calculations you can assume the earth is a perfect sphere and has a radius is 6371 km.
-
-Once you are done, please provide us with a link to a git repo with your code, ready to run.
+## What could be improved
+- as we deal with coordinates and cities, we could use mongo Geospatial features to perform geo spatial queries.
+- the "area-result" endpoint send by default a 202 if the queue system is not done processing. But it could be that 
+  the worker never started the process in the first place, or crashed. So it would be nice to have the queue knowing 
+  what process are actually in progress. 

@@ -29,6 +29,7 @@ const server = `${protocol}://${host}:${port}`;
   assert.strictEqual(city.guid, 'ed354fef-31d3-44a9-b92f-4a3bd7eb0408')
   assert.strictEqual(city.latitude, -1.409358);
   assert.strictEqual(city.longitude, -37.257104);
+  console.log("City by tags OK");
 
   // find the distance between two cities
   result = await fetch(`${server}/distance?from=${city.guid}&to=17f4ceee-8270-4119-87c0-9c1ef946695e`, {
@@ -44,6 +45,7 @@ const server = `${protocol}://${host}:${port}`;
   assert.strictEqual(body.to.guid, '17f4ceee-8270-4119-87c0-9c1ef946695e');
   assert.strictEqual(body.unit, 'km');
   assert.strictEqual(body.distance, 13376.38);
+  console.log("Distance OK");
 
   // now it get's a bit more tricky. We want to find all cities within 250 km of the
   // the one we found earlier. That might take a while, so rather than waiting for the
@@ -84,6 +86,7 @@ const server = `${protocol}://${host}:${port}`;
   // and let's look at a sample
   const filteredByAddress = cities.filter(city => city.address === '859 Cyrus Avenue, Devon, Missouri, 1642');
   assert.strictEqual(filteredByAddress.length, 1);
+  console.log("area-result OK");
 
   // okay, nice we got this far. we are almost there. but let's have an endpoint
   // for downloading all cites.
