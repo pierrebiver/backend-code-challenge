@@ -2,24 +2,23 @@
   "name": "be-code-challenge",
   "version": "1.0.0",
   "type": "module",
-  "description": "GAN Integrity backend code challenge",
+  "description": "backend code challenge",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "web-service": "node api/app.js",
-    "worker": "node api/worker.js",
-    "init-db": " mongoimport --db gan-integrity --collection cities --file addresses.json --drop --jsonArray"
+    "web-service": "node src/app.js",
+    "worker": "node src/worker.js",
+    "init-db": " mongoimport --db code-challenge-cities --collection cities --file addresses.json --drop --jsonArray"
   },
-  "author": "GAN Integrity",
   "license": "ISC",
   "dependencies": {
-    "amqplib": "^0.8.0",
-    "express": "^4.17.1",
+    "amqplib": "^0.9.0",
+    "apollo-server": "^3.7.0",
     "express-query-boolean": "^2.0.0",
     "fs-extra": "7.0.0",
-    "mongodb": "^3.6.9",
-    "node-fetch": "^2.6.1",
-    "node-schedule": "^2.0.0",
+    "graphql": "^16.5.0",
+    "mongodb": "^4.6.0",
+    "node-fetch": "^3.2.4",
+    "node-schedule": "^2.1.0",
     "throng": "^5.0.0",
     "uuid": "^8.3.2"
   }

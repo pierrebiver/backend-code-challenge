@@ -1,7 +1,7 @@
 import throng from 'throng';
 import schedule from 'node-schedule';
 import {closeDatabaseConnection, connectDatabase, findAllCitiesBut, findByIds} from "./database.js";
-import {initializeQueue} from "./queue.js";
+import {closeQueueConnection, initializeQueue} from "./queue.js";
 import {getDistanceInKm} from "./distance.js";
 
 await connectDatabase();
@@ -35,7 +35,9 @@ throng({start});
 
 process.on('SIGINT', async () => {
     await closeDatabaseConnection();
+    closeQueueConnection();
 });
 process.on('SIGTERM', async () => {
     await closeDatabaseConnection();
+    closeQueueConnection();
 });

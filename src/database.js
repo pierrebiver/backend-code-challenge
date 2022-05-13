@@ -1,6 +1,6 @@
 import mongo from "mongodb";
 
-const uri = "mongodb://localhost:27017/?poolSize=20&writeConcern=majority";
+const uri = "mongodb://localhost:27017/?writeConcern=majority";
 const client = new mongo.MongoClient(uri,);
 
 let collection;
@@ -8,7 +8,7 @@ let collection;
 export async function connectDatabase() {
     try {
         await client.connect();
-        collection = await client.db("gan-integrity").collection("cities");
+        collection = await client.db("code-challenge-cities").collection("cities");
     } catch (e) {
         console.error(e);
     }
@@ -19,7 +19,7 @@ export async function findAllCitiesBut(from) {
 }
 
 export async function findAll() {
-    return collection.find();
+    return collection.find().toArray();
 }
 
 export function closeDatabaseConnection() {

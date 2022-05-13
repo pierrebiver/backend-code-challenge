@@ -1,4 +1,4 @@
-# GAN Integrity backend code challenge
+# Backend code challenge
 
 ## Pre-requisite
  You only need to have node and docker (with docker-compose) installed on your machine
