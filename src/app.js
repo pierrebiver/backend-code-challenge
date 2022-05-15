@@ -3,7 +3,6 @@ import {typeDefs} from "./type-defs.js";
 import {resolvers} from "./resolvers.js";
 import {closeDatabaseConnection} from "./database.js";
 import {closeQueueConnection} from "./queue.js";
-import {verifyAuthorization} from "./middleware.js";
 
 const server = new ApolloServer({
     typeDefs,

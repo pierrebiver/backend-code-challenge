@@ -21,7 +21,7 @@ export const typeDefs = gql`
         allCities: [City!]!
         citiesByTag(tag: String!, isActive: Boolean!): [City!]!
         distance(from: String!, to: String!): Distance!
-        triggerAreaCalculation(from: String!, to: String!): String!
+        triggerAreaCalculation(from: String!, distance: Float!): String!
         areaResult(id: String!): [City!]!
     }
 `
